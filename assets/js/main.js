@@ -527,7 +527,10 @@
         // al terminar la animación se limpian las clases para que los hover propios funcionen
         setTimeout(function () { el.classList.remove('reveal', 'reveal-stagger', 'is-visible'); }, 1400);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    // threshold 0: basta con que el borde superior entre en pantalla. Con un porcentaje (p. ej. 0.08)
+    // los bloques muy altos —como la lista de 14 cursos en una sola columna en celular— nunca
+    // alcanzaban ese porcentaje visible y se quedaban invisibles.
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
