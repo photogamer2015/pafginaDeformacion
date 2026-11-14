@@ -442,7 +442,8 @@ html.is-loading { overflow: hidden; }
 .team-card--lead .team-card__badge img { width: 40px; height: 40px; }
 .team-card--lead h3 { font-size: 24px; margin-top: 6px; }
 .team-card--lead h3::after { content: ""; display: block; width: 40px; height: 3px; margin: 12px auto 0; border-radius: 3px; background: linear-gradient(90deg, var(--orange-600), var(--orange-500)); }
-.team-grid--5 { grid-template-columns: repeat(5, 1fr); }
+.team-grid--5 { --cols: 5; --gap: 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
+.team-grid--5 > .team-card { width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
 .team-lead { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); justify-content: center; gap: 40px; padding-bottom: 48px; margin-bottom: 48px; border-bottom: 1px solid var(--line); }
 .team-join { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px 24px; margin-top: 44px; padding: 20px 24px; border-radius: var(--radius-lg); background: var(--bg-soft); border: 1px solid var(--line); text-align: center; }
 .team-join p { margin: 0; color: var(--text); }
@@ -756,6 +757,7 @@ a.contact-card:hover { border-color: var(--line-strong); box-shadow: var(--shado
   .stat:nth-child(3) { border-left: 0; }
   .course-grid { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .team-grid--5 { --cols: 3; }
   .card-grid--4 { grid-template-columns: repeat(2, 1fr); }
   .footer__top { grid-template-columns: 1fr 1fr; }
   .benefits { grid-template-columns: repeat(2, 1fr); }
@@ -825,6 +827,7 @@ a.contact-card:hover { border-color: var(--line-strong); box-shadow: var(--shado
   .stat { padding: 4px 16px; }
   .course-grid, .card-grid, .card-grid--4, .card-grid--5 { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .team-grid--5 { --cols: 2; --gap: 16px; }
   .team-lead { grid-template-columns: repeat(2, 1fr); gap: 16px; padding-bottom: 32px; margin-bottom: 32px; }
   .team-card--lead { padding: 12px 12px 18px; }
   .team-card--lead h3 { font-size: 18px; }
